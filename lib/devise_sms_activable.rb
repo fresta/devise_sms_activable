@@ -7,6 +7,11 @@ require "devise_sms_activable/schema"
 require 'devise_sms_activable/controllers/url_helpers'
 require 'devise_sms_activable/controllers/helpers'
 require 'devise_sms_activable/rails'
+require 'devise_sms_activable/sms_sender'
+require 'devise_sms_activable/sms_sender'
+require 'devise_sms_activable/models/sms_activable'
+
+
 
 module Devise
   mattr_accessor :sms_confirm_within
@@ -27,4 +32,4 @@ module Devise
   self.sms_sender = "Devise::SmsSender"
 end
 
-Devise.add_module :sms_activable, :model => "models/sms_activable", :controller => :sms_activations, :route => :sms_activation
+Devise.add_module :sms_activable, :model => "sms_activable", :controller => :sms_activations, :route => :sms_activation
