@@ -5,7 +5,7 @@ module DeviseSmsActivable::Controllers::Helpers
   def require_sms_activated!
     if(send(:"authenticate_#{resource_name}!"))
       res=send(:"current_#{resource_name}")
-      redirect_to confirm_path if (!res) || (!res.confirmed_sms?)
+      redirect_to insert_account_holder_sms_activation_path if (!res) || (!res.confirmed_sms?)
     end
   end
 end
