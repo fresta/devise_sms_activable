@@ -25,7 +25,7 @@ class Devise::SmsActivationsController < DeviseController
 
   # GET or POST /resource/sms_activation/consume?sms_token=abcdef
   def consume
-    self.resource = resource_class.confirm_by_sms_token(params[resource_name][:sms_confirmation_token])
+    self.resource = resource_class.confirm_by_sms_token(resource_params[:sms_confirmation_token])
     yield resource if block_given?
 
     if resource.errors.empty?
@@ -35,6 +35,12 @@ class Devise::SmsActivationsController < DeviseController
       respond_with resource, action: :insert
     end
   end
+
+  private
+      def resource_params
+        params.permit(:sms_confirmation_token)
+      end
+
 
   protected
 
