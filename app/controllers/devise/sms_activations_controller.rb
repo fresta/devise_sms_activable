@@ -20,7 +20,7 @@ class Devise::SmsActivationsController < DeviseController
 
   # GET /resource/sms_activation/insert
   def insert
-    build_resource({})
+    build_resource(resource_class)
   end
 
   # GET or POST /resource/sms_activation/consume?sms_token=abcdef
